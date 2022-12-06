@@ -24,7 +24,7 @@ public class Utility {
 		String d = formattter.format(date);
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File src = ts.getScreenshotAs(OutputType.FILE);
-		File dest = new File ("testScreenshots\\KhanAcademyTest"+d+".jpg");
+		File dest = new File ("testScreenshots\\KhanAcademyTest" +d+ ".jpg");
 		FileHandler.copy(src, dest);
 		
 	}
