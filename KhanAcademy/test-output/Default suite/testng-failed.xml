@@ -3,17 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.LoginPageTest">
+      <class name="testCases.LogoutTest">
         <methods>
-          <include name="launchApplication"/>
           <include name="createPOMObjects"/>
           <include name="closeBrowser"/>
-          <include name="loginTest"/>
-          <include name="logoutFromApplication"/>
-          <include name="clearObjects"/>
           <include name="launchBrowser"/>
+          <include name="clearObjects"/>
+          <include name="launchApplication"/>
+          <include name="logoutTest"/>
         </methods>
-      </class> <!-- testCases.LoginPageTest -->
+      </class> <!-- testCases.LogoutTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

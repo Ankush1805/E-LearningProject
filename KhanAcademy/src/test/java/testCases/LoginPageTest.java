@@ -24,6 +24,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
+import pageObjects.DashboardPage;
 import pageObjects.LoginPage;
 import setup.Base;
 import utilities.Utility;
@@ -32,6 +33,7 @@ public class LoginPageTest {
 	
 	private WebDriver driver;
 	private LoginPage loginPage;
+	private DashboardPage dashboardPage;
 	private int testID;
 	static ExtentTest test;
 	static ExtentHtmlReporter reporter;
@@ -44,14 +46,10 @@ public class LoginPageTest {
 		reporter=new ExtentHtmlReporter ("test-output\\ExtentReport\\Extent.Html");
 		ExtentReports extend = new ExtentReports();
 		extend.attachReporter(reporter);
-		
+			
 		if(browserName.equals("Chrome"))
 		{
 			driver=Base.openChromeBrowser();
-		}
-		if(browserName.equals("Edge"))
-		{
-			driver=Base.openEdgeBrowser();
 		}
 	
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -62,6 +60,7 @@ public class LoginPageTest {
 	public void createPOMObjects()
 	{
 		loginPage = new LoginPage(driver);
+		dashboardPage = new DashboardPage(driver);
 	}
 	
 	@BeforeMethod
@@ -90,13 +89,16 @@ public class LoginPageTest {
 		{
 			Utility.captureScreen(driver,testID);
 		}
-		System.out.println("Logout");
+		
+		dashboardPage.clickOnAccount();
+		dashboardPage.clickOnLogout();
 	}
 	
 	@AfterClass
 	public void clearObjects()
 	{
 		LoginPage loginPage=null;
+		DashboardPage dashboardPage=null;
 	}
 	
 	@AfterTest
